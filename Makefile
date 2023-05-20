@@ -6,7 +6,7 @@
 #    By: avan-der <avan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/05/19 19:21:19 by avan-der      #+#    #+#                  #
-#    Updated: 2023/05/20 15:05:25 by avan-der      ########   odam.nl          #
+#    Updated: 2023/05/20 15:09:41 by avan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ $(NAME):	$(OBJ)
 			@ranlib $(NAME)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
-			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
