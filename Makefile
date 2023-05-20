@@ -6,7 +6,7 @@
 #    By: avan-der <avan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/05/19 19:21:19 by avan-der      #+#    #+#                  #
-#    Updated: 2023/05/19 19:38:50 by avan-der      ########   odam.nl          #
+#    Updated: 2023/05/20 10:48:06 by avan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,7 @@ CFLAGS		=	-Wall -Werror -Wextra -I
 RM			=	rm -f
 AR			=	ar rcs
 
-#Colors
-
+# COLORS
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;90m
 RED = \033[0;91m
@@ -32,8 +31,7 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-#Sources
-
+# SOURCES
 FTIS_DIR	=	is/
 FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
 
@@ -66,7 +64,6 @@ SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 BONUS_OBJ	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(BONUS_FILES)))
 
-
 ###
 
 OBJF		=	.cache_exists
@@ -76,10 +73,8 @@ all:		$(NAME)
 $(NAME):	$(OBJ)
 			@$(AR) $(NAME) $(OBJ)
 			@ranlib $(NAME)
-			@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJF):
@@ -93,19 +88,16 @@ $(OBJF):
 
 bonus:		$(BONUS_OBJ)
 			@$(AR) $(NAME) $(BONUS_OBJ)
-			@echo "$(GREEN)Libft bonus compiled!$(DEF_COLOR)"
+			@echo "Libft bonus compiled!"
 
 clean:
 			@$(RM) -rf $(OBJ_DIR)
 			@$(RM) -f $(OBJF)
-			@echo "$(BLUE)Libft objects files cleaned!$(DEF_COLOR)"
 
 fclean:		clean
 			@$(RM) -f $(NAME)
-			@echo "$(CYAN)Libft executable files cleaned!$(DEF_COLOR)"
 
 re:			fclean all
-			@echo "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)"
 
 norm:
 			@norminette $(SRC) $(INCLUDES) | grep -v Norme -B1 || true
