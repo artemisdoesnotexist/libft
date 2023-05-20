@@ -6,13 +6,13 @@
 #    By: avan-der <avan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/05/19 19:21:19 by avan-der      #+#    #+#                  #
-#    Updated: 2023/05/20 15:09:41 by avan-der      ########   odam.nl          #
+#    Updated: 2023/05/20 15:17:10 by avan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 # CONFIG
 NAME		=	libft.a
-INCLUDES	=	include/
+INCLUDE		=	include/
 SRC_DIR 	=	src/
 OBJ_DIR		=	obj/
 CC			=	gcc
@@ -80,6 +80,7 @@ $(NAME):	$(OBJ)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
